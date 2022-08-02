@@ -3,6 +3,7 @@ import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './QuoteForm.module.css';
 import { Prompt } from 'react-router-dom';
+//!prompt is used for unwanted Transitions,
 
 const QuoteForm = (props) => {
   const authorInputRef = useRef();
@@ -22,8 +23,12 @@ const QuoteForm = (props) => {
   const FocusHandler = ()=>{
     setIsEntering(true);
   }
+  const FinshedEnteringHandler = ()=>{
+    setIsEntering(false);
+  }
   return (
     <Fragment>
+  
     <Prompt when={isEntering} message={'Are you sure you want to leave, All your data will be lost'}/>
     <Card>
       <form  onFocus={FocusHandler} className={classes.form} onSubmit={submitFormHandler}>
@@ -42,7 +47,7 @@ const QuoteForm = (props) => {
           <textarea id='text' rows='5' ref={textInputRef}></textarea>
         </div>
         <div className={classes.actions}>
-          <button className='btn'>Add Quote</button>
+          <button onClick={FinshedEnteringHandler} className='btn'>Add Quote</button>
         </div>
       </form>
     </Card>
