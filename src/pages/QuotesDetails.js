@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { useParams, Route } from "react-router-dom";
 import Comments from "../components/comments/Comments";
 import HighLightedQuote from '../components/quotes/HighlightedQuote';
+import NoQuotesFound from "../components/quotes/NoQuotesFound";
 const DUMMY_QUOTES = [
   {
     id: "q1",
@@ -19,7 +20,7 @@ const QuotesDetails = (props) => {
   const quote = DUMMY_QUOTES.find( quotes=> quotes.id === param.quotesId)
 
   if(!quote){
-    return <p>No Quote Found !</p>
+    return <NoQuotesFound />
   }
   return (
     <Fragment>
